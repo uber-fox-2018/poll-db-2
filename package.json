@@ -1,0 +1,27 @@
+{
+  "name": "poll_asrul",
+  "version": "1.0.0",
+  "description": "Poll apps for precident",
+  "main": "Controller.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uber-fox-2018/poll-db-1.git"
+  },
+  "keywords": [
+    "poll",
+    "apps",
+    "asrul"
+  ],
+  "author": "Asrul Harahap <talkasrul@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/uber-fox-2018/poll-db-1/issues"
+  },
+  "homepage": "https://github.com/uber-fox-2018/poll-db-1#readme",
+  "dependencies": {
+    "sqlite3": "^4.0.2"
+  }
+}
