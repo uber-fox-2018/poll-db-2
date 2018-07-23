@@ -1,0 +1,32 @@
+1. SELECT name, location, grade_current, COUNT(*) AS totalVote
+   FROM politicians
+   INNER JOIN votes
+   ON politicians.id = votes.politicians_id
+   WHERE grade_current < 9
+   GROUP BY grade_current
+   ORDER BY grade_current ASC
+
+
+2. SELECT politic.totalVote,name,first_name || " " || last_name AS voterName, gender
+   FROM votes,
+   (SELECT politicians.id, name, COUNT(*) AS totalVote
+   FROM politicians
+   INNER JOIN votes
+   ON politicians.id = votes.politicians_id
+   GROUP BY name
+   ORDER BY totalVote DESC
+   LIMIT 3) AS politic
+   LEFT JOIN voters
+   ON voters.id = votes.voters_id
+   WHERE votes.politicians_id = politic.id
+
+3. SELECT COUNT(*) AS totalVote,first_name || " " || last_name AS name, gender, age 
+   FROM voters
+   INNER JOIN Votes
+   ON
+   voters.id = votes.voters_id
+   GROUP BY name
+   HAVING totalVote > 1
+   ORDER BY totalVote DESC
+
+
