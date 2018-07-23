@@ -23,11 +23,15 @@ class Controller {
             this.readingPoliticianThre()
         } else if(this.input[0] == 'voterolympia') {
             this.readingPoliticianVoterOlympia()
+        } else if(this.input[0] == 'voternine') {
+            this.readingPoliticianVoteNine()
         } else if(this.input[0] == 'addVoter') {
             this.addingVoter()
         } else if(this.input[0] == 'addVote') {
             this.addingVote()
         }
+
+        
     }
 
     // adding vote from argv
@@ -96,6 +100,14 @@ class Controller {
             View.Display(data);
         })
     }
+
+    // kurang 9
+    readingPoliticianVoteNine() {
+        Model.readingPoliticianVoteNine( (data) => {
+            View.Display(data);
+        })
+    }
+    
 
 
 }

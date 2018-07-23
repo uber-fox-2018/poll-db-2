@@ -82,6 +82,33 @@ class Model {
         })
     }
 
+    // read jumlah < 9
+    static readingPoliticianVoteNine(dataQuery) {
+        let query = `SELECT name, location, grade_current, count(*) as totalVote FROM politicians 
+                    join votes 
+                    on politicians.id = votes.politician_id
+                    WHERE grade_current < 9
+                    group by politicians.name
+                    order by totalVote
+                    `;
+        db.serialize( () => {
+            db.all(query, (err, data) => {
+                dataQuery(data);
+            })
+        })
+    }
+
+    // read jumlah winner
+    static readingPoliticianVoteWinner(dataQuery) {
+        let query = `
+                    `;
+        db.serialize( () => {
+            db.all(query, (err, data) => {
+                dataQuery(data);
+            })
+        })
+    }
+
     // Insert voter from argv
     static addVoter(first_name, last_name, gender, age) {
         let query = `INSERT INTO voters (first_name, last_name, gender, age)
