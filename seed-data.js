@@ -1,30 +1,32 @@
-const sqlite3 = require('sqlite3').verbose()
-const db = new sqlite3.Database('../poll-db-1/poll-db-1')
+/*
+1. SELECT name, location,  grade_current, COUNT(name) AS totalVote 
+   FROM Votes
+   INNER JOIN  Politicians
+   ON Politicians.politicianId = Votes.politicianId
+   WHERE grade_current < 9
+   GROUP BY name
+   ORDER BY grade_current
 
-function numberOne(){
-    let query = `SELECT name, location,  grade_current, COUNT(name) AS totalVote 
-                FROM Votes
-                INNER JOIN  Politicians
-                ON Politicians.politicianId = Votes.politicianId
-                WHERE grade_current < 9
-                GROUP BY name
-                ORDER BY grade_current`
 
-                 
-    
-    db.all(query,function(err,data){
-        if(err) throw err
-        console.table(data)
-    })
-}
+2. `SELECT Politicians.id,Politicians.name, Politicians.location,count(votes.politicianId) as totalVotes 
+    FROM Politicians 
+    LEFT JOIN Votes 
+    ON Politicians.id = Votes.politicianId
+    GROUP BY Politicians.name  
+    ORDER BY totalVotes desc  limit 3
+         SELECT data1.totalVotes, data1.name as PoliticiansName,first_name||' '||last_name as VotersName,Voters.gender 
+         FROM data1
+         JOIN Votes 
+         ON data1.id = Votes.politicianId 
+         LEFT JOIN Voters
+          ON Voters.id = votes.voterId 
+         ORDER BY totalVotes desc 
 
-function numberTwo(){
-    let query = ``
+3. SELECT COUNT(Votes.voterId) as totalVote , first_name||' '||last_name as name,gender,age 
+    FROM Voters 
+    INNER JOIN votes 
+    on Voters.id=Votes.VoterId 
+    GROUP BY name having totalVote >1 
+    ORDER BY totalVote desc
 
-    db.all(query,function(err,data){
-        if(err) throw (err)
-        console.table(data)
-    })
-}
-
-numberOne()
+   */ 
